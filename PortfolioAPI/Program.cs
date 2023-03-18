@@ -9,8 +9,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("GoogleReCaptchaPolicy",
         policy =>
         {
-            policy.WithOrigins("https://localhost:7152")
-                                .WithMethods("PUT");
+            policy.WithOrigins("https://www.harrihonkanen.com")
+                                .WithMethods("POST");
         });
 });
 
