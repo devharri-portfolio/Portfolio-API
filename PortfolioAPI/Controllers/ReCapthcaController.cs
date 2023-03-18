@@ -9,8 +9,9 @@ using PortfolioAPI.Services;
 
 namespace PortfolioAPI.Controllers;
 
-[ApiController]
+[EnableCors("MyPolicy")]
 [Route("api/[controller]")]
+[ApiController]
 public class PortfolioController : ControllerBase
 {
     private readonly GoogleCaptchaService _captchaService;
@@ -20,7 +21,7 @@ public class PortfolioController : ControllerBase
         _captchaService = captchaService;
     }
 
-    // GET: api/portfolio
+    // GET: api/recaptcha
     [HttpGet]
     public async Task<bool> Get([FromQuery] string token)
     {
