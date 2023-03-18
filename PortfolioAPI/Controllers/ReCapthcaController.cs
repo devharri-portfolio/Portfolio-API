@@ -9,14 +9,14 @@ using PortfolioAPI.Services;
 
 namespace PortfolioAPI.Controllers;
 
-[EnableCors("MyPolicy")]
+[EnableCors("GoogleReCaptchaPolicy")]
 [Route("api/[controller]")]
 [ApiController]
-public class PortfolioController : ControllerBase
+public class ReCaptchaController : ControllerBase
 {
     private readonly GoogleCaptchaService _captchaService;
 
-    public PortfolioController(GoogleCaptchaService captchaService)
+    public ReCaptchaController(GoogleCaptchaService captchaService)
     {
         _captchaService = captchaService;
     }

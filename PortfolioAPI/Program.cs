@@ -6,13 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "MyPolicy",
+    options.AddPolicy("GoogleReCaptchaPolicy",
         policy =>
         {
-            policy.WithOrigins(
-                "https://localhost:7152",
-                "http://localhost:5055")
-                .WithMethods("GET");
+            policy.WithOrigins("https://localhost:7152")
+                                .WithMethods("PUT");
         });
 });
 
