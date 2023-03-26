@@ -7,9 +7,9 @@ namespace PortfolioAPI.Services;
 
 public class GoogleCaptchaService
 {
-    private readonly IOptionsMonitor<GoogleCaptchaConfig> _config;
+    private readonly IConfiguration _config;
 
-    public GoogleCaptchaService(IOptionsMonitor<GoogleCaptchaConfig> config)
+    public GoogleCaptchaService(IConfiguration config)
     {
         _config = config;
     }
@@ -18,7 +18,7 @@ public class GoogleCaptchaService
     {
         try
         {
-            var url = $"https://www.google.com/recaptcha/api/siteverify?secret={_config.CurrentValue.SecretKey}&response={token}";
+            var url = $"https://www.google.com/recaptcha/api/siteverify?secret={_config.GetSection("GoogleCaptchaSecretKey")}&response={token}";
 
             using(var client = new HttpClient())
             {

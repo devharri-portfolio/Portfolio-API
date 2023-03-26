@@ -21,7 +21,7 @@ public class EmailService : IEmailService
             //Declare message
             var message = new MimeMessage();
             //Declare and add from
-            MailboxAddress from = new MailboxAddress("Web Portfolio", "harrihonkanenportfolio@outlook.com");
+            MailboxAddress from = new MailboxAddress("Web Portfolio", _config.GetSection("EmailUsername").Value);
             message.From.Add(from);
             //Declare and add to
             MailboxAddress to = new MailboxAddress("Harri Honkanen", "devharri@outlook.com");
