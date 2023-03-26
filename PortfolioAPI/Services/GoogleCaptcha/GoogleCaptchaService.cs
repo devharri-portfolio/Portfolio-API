@@ -3,9 +3,9 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using PortfolioAPI.Models.GoogleCaptcha;
 
-namespace PortfolioAPI.Services;
+namespace PortfolioAPI.Services.GoogleCaptcha;
 
-public class GoogleCaptchaService
+public class GoogleCaptchaService : IGoogleCaptchaService
 {
     private readonly IConfiguration _config;
 
@@ -20,7 +20,7 @@ public class GoogleCaptchaService
         {
             var url = $"https://www.google.com/recaptcha/api/siteverify?secret={_config.GetSection("GoogleCaptchaSecretKey")}&response={token}";
 
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 var response = await client.GetAsync(url);
                 if (response.StatusCode != HttpStatusCode.OK)

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
-using PortfolioAPI.Services;
+using PortfolioAPI.Services.GoogleCaptcha;
 
 namespace PortfolioAPI.Controllers;
 
@@ -14,9 +14,9 @@ namespace PortfolioAPI.Controllers;
 [ApiController]
 public class ReCaptchaController : ControllerBase
 {
-    private readonly GoogleCaptchaService _captchaService;
+    private readonly IGoogleCaptchaService _captchaService;
 
-    public ReCaptchaController(GoogleCaptchaService captchaService)
+    public ReCaptchaController(IGoogleCaptchaService captchaService)
     {
         _captchaService = captchaService;
     }
