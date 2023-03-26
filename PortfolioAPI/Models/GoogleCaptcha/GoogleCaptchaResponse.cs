@@ -1,4 +1,4 @@
-﻿namespace PortfolioAPI.Models;
+﻿namespace PortfolioAPI.Models.GoogleCaptcha;
 
 public class GoogleCaptchaResponse
 {

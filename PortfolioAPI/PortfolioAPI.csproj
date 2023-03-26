@@ -13,14 +13,23 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="MailKit" Version="3.6.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Services\" />
+    <None Remove="Models\Email\" />
+    <None Remove="Models\GoogleCaptcha\" />
+    <None Remove="Services\Email\" />
+    <None Remove="Services\GoogleCaptcha\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
+    <Folder Include="Models\Email\" />
+    <Folder Include="Models\GoogleCaptcha\" />
+    <Folder Include="Services\Email\" />
+    <Folder Include="Services\GoogleCaptcha\" />
   </ItemGroup>
 </Project>

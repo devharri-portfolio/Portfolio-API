@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using PortfolioAPI.Models;
+using PortfolioAPI.Models.GoogleCaptcha;
 
 namespace PortfolioAPI.Services;
 
@@ -22,13 +22,13 @@ public class GoogleCaptchaService
 
             using(var client = new HttpClient())
             {
-                var httpResult = await client.GetAsync(url);
-                if (httpResult.StatusCode != HttpStatusCode.OK)
+                var response = await client.GetAsync(url);
+                if (response.StatusCode != HttpStatusCode.OK)
                 {
                     return false;
                 }
 
-                var responseString = await httpResult.Content.ReadAsStringAsync();
+                var responseString = await response.Content.ReadAsStringAsync();
                 var googleResult = JsonConvert.DeserializeObject<GoogleCaptchaResponse>(responseString);
 
                 return googleResult.success && googleResult.score >= 0.5;

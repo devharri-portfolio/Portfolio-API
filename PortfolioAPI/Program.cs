@@ -1,4 +1,5 @@
-﻿using PortfolioAPI.Models;
+﻿using PortfolioAPI.Models.GoogleCaptcha;
+using PortfolioAPI.Services.Email;
 using PortfolioAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,20 +7,28 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("GoogleReCaptchaPolicy",
+    options.AddPolicy("GoogleCaptchaPolicy",
         policy =>
         {
             policy.WithOrigins("https://www.harrihonkanen.com")
                                 .WithMethods("GET");
         });
+    options.AddPolicy("EmailPolicy",
+    policy =>
+    {
+        policy.WithOrigins("https://www.harrihonkanen.com")
+                            .WithMethods("POST");
+    });
 });
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.Configure<GoogleCaptchaConfig>(builder.Configuration.GetSection("GoogleReCaptcha"));
+builder.Services.Configure<GoogleCaptchaConfig>(builder.Configuration.GetSection("GoogleCaptcha"));
 builder.Services.AddTransient<GoogleCaptchaService>();
+builder.Services.AddTransient<IEmailService,EmailService>();
+
 
 
 var app = builder.Build();

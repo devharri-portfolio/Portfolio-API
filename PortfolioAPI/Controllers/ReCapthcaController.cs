@@ -9,7 +9,7 @@ using PortfolioAPI.Services;
 
 namespace PortfolioAPI.Controllers;
 
-[EnableCors("GoogleReCaptchaPolicy")]
+[EnableCors("GoogleCaptchaPolicy")]
 [Route("api/[controller]")]
 [ApiController]
 public class ReCaptchaController : ControllerBase
