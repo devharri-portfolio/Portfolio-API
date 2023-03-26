@@ -39,7 +39,6 @@ public class EmailService : IEmailService
                 client.Connect(_config.GetSection("EmailHost").Value, 587, SecureSocketOptions.StartTls);
                 client.Authenticate(_config.GetSection("EmailUsername").Value, _config.GetSection("EmailPassword").Value);
                 var response = await client.SendAsync(message);
-                Console.WriteLine(response);
                 client.Disconnect(true);
             }
 
