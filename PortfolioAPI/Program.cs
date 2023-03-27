@@ -17,7 +17,8 @@ builder.Services.AddCors(options =>
     policy =>
     {
         policy.WithOrigins("https://www.harrihonkanen.com")
-                            .WithMethods("POST");
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
     });
 });
 

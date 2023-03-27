@@ -18,7 +18,7 @@ public class GoogleCaptchaService : IGoogleCaptchaService
     {
         try
         {
-            var url = $"https://www.google.com/recaptcha/api/siteverify?secret={_config.GetSection("GoogleCaptchaSecretKey")}&response={token}";
+            var url = $"https://www.google.com/recaptcha/api/siteverify?secret={_config.GetSection("GoogleCaptchaSecretKey").Value}&response={token}";
 
             using (var client = new HttpClient())
             {
@@ -31,7 +31,7 @@ public class GoogleCaptchaService : IGoogleCaptchaService
                 var responseString = await response.Content.ReadAsStringAsync();
                 var googleResult = JsonConvert.DeserializeObject<GoogleCaptchaResponse>(responseString);
 
-                return googleResult.success && googleResult.score >= 0.5;
+                return googleResult.success && googleResult.score >= 0.3;
             }
         }
         catch (Exception ex)
