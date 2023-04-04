@@ -10,16 +10,14 @@ builder.Services.AddCors(options =>
     options.AddPolicy("GoogleCaptchaPolicy",
         policy =>
         {
-            policy.WithOrigins("https://www.harrihonkanen.com",
-                                "https://localhost:7152")
+            policy.WithOrigins("https://www.harrihonkanen.com")
                                 .WithMethods("GET")
                                 .AllowAnyHeader();
         });
     options.AddPolicy("EmailPolicy",
     policy =>
     {
-        policy.WithOrigins("https://www.harrihonkanen.com",
-                            "https://localhost:7152")
+        policy.WithOrigins("https://www.harrihonkanen.com")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
     });
