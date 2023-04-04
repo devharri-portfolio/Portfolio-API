@@ -23,6 +23,7 @@
     <None Remove="Models\GoogleCaptcha\" />
     <None Remove="Services\Email\" />
     <None Remove="Services\GoogleCaptcha\" />
+    <None Remove="Middleware\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -31,5 +32,6 @@
     <Folder Include="Models\GoogleCaptcha\" />
     <Folder Include="Services\Email\" />
     <Folder Include="Services\GoogleCaptcha\" />
+    <Folder Include="Middleware\" />
   </ItemGroup>
 </Project>

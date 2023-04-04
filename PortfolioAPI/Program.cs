@@ -1,4 +1,4 @@
-﻿using PortfolioAPI.Models.GoogleCaptcha;
+﻿using PortfolioAPI.Middleware;
 using PortfolioAPI.Services.Email;
 using PortfolioAPI.Services.GoogleCaptcha;
 
@@ -10,13 +10,16 @@ builder.Services.AddCors(options =>
     options.AddPolicy("GoogleCaptchaPolicy",
         policy =>
         {
-            policy.WithOrigins("https://www.harrihonkanen.com")
-                                .WithMethods("GET");
+            policy.WithOrigins("https://www.harrihonkanen.com",
+                                "https://localhost:7152")
+                                .WithMethods("GET")
+                                .AllowAnyHeader();
         });
     options.AddPolicy("EmailPolicy",
     policy =>
     {
-        policy.WithOrigins("https://www.harrihonkanen.com")
+        policy.WithOrigins("https://www.harrihonkanen.com",
+                            "https://localhost:7152")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
     });
@@ -44,7 +47,8 @@ app.UseCors();
 
 app.UseAuthorization();
 
+app.UseMiddleware<ApiKeyMiddleware>();
+
 app.MapControllers();
 
 app.Run();
-
